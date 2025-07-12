@@ -1,0 +1,47 @@
+body {
+  background-color: #f9f7fe;
+  font-family: "Roboto", sans-serif;
+}
+
+.whole-page {
+  background: white;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 30px 50px #41326414;
+}
+
+.search-style {
+  background-color: #f9f7fe;
+  width: 80%;
+  padding: 10px;
+  border: none;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.submit-style {
+  background-color: #885df1;
+  font-size: 18px;
+  width: 15%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+}
+
+header {
+  border-bottom: 1px solid rgb(197, 190, 190);
+  padding: 0 0 30px 0;
+}
+
+footer {
+  border-top: 1px solid rgb(197, 190, 190);
+  padding: 25px 0 0 0;
+  text-align: center;
+}
+
+.whole-flex-div {
+  display: flex;
+}
