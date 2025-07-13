@@ -3,6 +3,16 @@ function showWather(respones) {
   let searchCity = document.querySelector("#city");
   searchCity.innerHTML = respones.data.city;
 
+  let descreptionElement = document.querySelector("#description");
+  descreptionElement.innerHTML = respones.data.condition.description;
+
+  console.log(respones.data);
+  let humidityElemint = document.querySelector("#humidity");
+  humidityElemint.innerHTML = `${respones.data.temperature.humidity}%`;
+
+  let windElemint = document.querySelector("#wind");
+  windElemint.innerHTML = `${respones.data.wind.speed}km/hr`;
+
   let temperature = respones.data.temperature.current;
   numberInput.innerHTML = Math.round(temperature);
 }
