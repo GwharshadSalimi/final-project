@@ -13,8 +13,30 @@ function showWather(respones) {
   let windElemint = document.querySelector("#wind");
   windElemint.innerHTML = `${respones.data.wind.speed}km/hr`;
 
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.time * 1000);
+  console.log(respones);
+  timeElement.innerHTML = formatDate(date);
+
   let temperature = respones.data.temperature.current;
   numberInput.innerHTML = Math.round(temperature);
+}
+
+function formatDate(date) {
+  let houres = date.getHoures();
+  let minutes = date.getMinutes();
+  let days = [
+    "saturday",
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+  ];
+  let day = days[date.getDay()];
+
+  return `${day} ${houres}:${minutes}`;
 }
 
 function searchTown(city) {
