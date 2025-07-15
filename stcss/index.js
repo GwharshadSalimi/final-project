@@ -18,9 +18,6 @@ function showWather(respones) {
   console.log(respones);
   timeElement.innerHTML = formatDate(date);
 
-  let iconElement = document.querySelector("#icon");
-  iconElement.innerHTML = `img src="${respones.data.condition.icon - url}`;
-
   let temperature = respones.data.temperature.current;
   numberInput.innerHTML = Math.round(temperature);
 }
