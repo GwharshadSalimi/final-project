@@ -9,6 +9,8 @@ function refreshWeather(respones) {
   windElement.innerHTML = `${respones.data.wind.speed}km/hr`;
   h1Element.innerHTML = respones.data.city;
   numberElement.innerHTML = Math.round(temperature);
+
+  getForcast(respones.data.city);
 }
 
 function changTemperature(city) {
@@ -17,7 +19,14 @@ function changTemperature(city) {
   axios.get(apiUrl).then(refreshWeather);
 }
 
-function displyForcast() {
+function getForcast(city) {
+  let apiKey = "19abto433b3602a6dd0fc334c03ec3cf";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displyForcast);
+}
+
+function displyForcast(respones) {
+  console.log(respones.data);
   let days = ["tue", "wed", "thu", "fri", "sat"];
   let forcastHtml = "";
 
@@ -47,6 +56,3 @@ function searchCity(event) {
 
 let formElement = document.querySelector(".search-form");
 formElement.addEventListener("submit", searchCity);
-
-searchCity(afghanistan);
-displyForcast();
