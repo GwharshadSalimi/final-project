@@ -17,6 +17,27 @@ function changTemperature(city) {
   axios.get(apiUrl).then(refreshWeather);
 }
 
+function displyForcast() {
+  let days = ["tue", "wed", "thu", "fri", "sat"];
+  let forcastHtml = "";
+
+  days.forEach(function (day) {
+    forcastHtml =
+      forcastHtml +
+      ` <div class="weather-forcast-date">
+          <div class="weather-forcast-day">${day}</div>
+          <div class="wheather-forcast-icon">🌤️</div>
+          <div class="whather-forcast-temperatures">
+            <div class="whather-forcast-temperature"><strong>23°</strong></div>
+            <div class="whather-forcast-temperature">12°</div>
+          </div>
+        </div>`;
+  });
+
+  let forcastELEMENT = document.querySelector("#forcast");
+  forcastELEMENT.innerHTML = forcastHtml;
+}
+
 function searchCity(event) {
   event.preventDefault();
   let searchelement = document.querySelector("#search-input");
@@ -26,3 +47,6 @@ function searchCity(event) {
 
 let formElement = document.querySelector(".search-form");
 formElement.addEventListener("submit", searchCity);
+
+searchCity(afghanistan);
+displyForcast();
