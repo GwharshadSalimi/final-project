@@ -74,8 +74,10 @@ header {
 }
 
 .wheather-forcast-icon {
-  text-align: center;
-  font-size: 25px;
+  width: 45px;
+  height: 45px;
+  display: block;
+  margin: 0 auto;
 }
 
 .whather-forcast-temperatures {

@@ -25,22 +25,34 @@ function getForcast(city) {
   axios.get(apiUrl).then(displyForcast);
 }
 
+function formatDay(timeStamp) {
+  let date = new Date(timeStamp * 1000);
+  let days = ["sat", "sun", "mon", "thu", "the"];
+  return days[date.getDate()];
+}
+
 function displyForcast(respones) {
   console.log(respones.data);
-  let days = ["tue", "wed", "thu", "fri", "sat"];
+
   let forcastHtml = "";
 
-  days.forEach(function (day) {
-    forcastHtml =
-      forcastHtml +
-      ` <div class="weather-forcast-date">
-          <div class="weather-forcast-day">${day}</div>
-          <div class="wheather-forcast-icon">🌤️</div>
+  respones.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forcastHtml =
+        forcastHtml +
+        ` <div class="weather-forcast-date">
+          <div class="weather-forcast-day">${formatDay(day.time)}</div>
+          <img src="${day.condition.icon_url}" class="wheather-forcast-icon"/>
           <div class="whather-forcast-temperatures">
-            <div class="whather-forcast-temperature"><strong>23°</strong></div>
-            <div class="whather-forcast-temperature">12°</div>
+            <div class="whather-forcast-temperature"><strong>${Math.round(
+              day.temperature.maximum
+            )}</strong></div>
+            <div class="whather-forcast-temperature">${Math.round(
+              day.temperature.minimum
+            )}</div>
           </div>
         </div>`;
+    }
   });
 
   let forcastELEMENT = document.querySelector("#forcast");
